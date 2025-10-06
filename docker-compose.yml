@@ -1,0 +1,20 @@
+services:
+  postgres-db-dev:
+    container_name: postgresDbMai
+    image: postgres:17-alpine
+    restart: unless-stopped
+    env_file: ".env"
+    healthcheck:
+      test: /usr/bin/pg_isready
+      interval: 5s
+      timeout: 10s
+      retries: 120
+    ports:
+      - "7432:5432"
+    volumes:
+      - postgres-data-dev:/var/lib/postgresql/data
+
+volumes:
+  postgres-data-dev:
+
+    left(UPPER(split_part(a_g.title, '-', 2)), 1) AS Course
