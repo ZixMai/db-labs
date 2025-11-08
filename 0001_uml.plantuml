@@ -1,0 +1,55 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class blogs {
+   name: varchar(200)
+   description: varchar(200)
+   creator_id: bigint
+   created_at: timestamp
+   id: bigint
+}
+class comments {
+   content: text
+   post_id: bigint
+   created_at: timestamp
+   reply_to_id: bigint
+   id: bigint
+}
+class likes {
+   created_at: timestamp
+   user_id: bigint
+   post_id: bigint
+}
+class posts {
+   content: text
+   blog_id: bigint
+   creator_id: bigint
+   created_at: timestamp
+   reply_to_id: bigint
+   id: bigint
+}
+class subscriptions {
+   created_at: timestamp
+   user_id: bigint
+   blog_id: bigint
+}
+class users {
+   user_name: varchar(200)
+   created_at: timestamp
+   id: bigint
+}
+
+blogs          -[#595959,plain]-^  users         : "creator_id:id"
+comments       -[#595959,plain]-^  comments      : "reply_to_id:id"
+comments       -[#595959,plain]-^  posts         : "post_id:id"
+likes          -[#595959,plain]-^  posts         : "post_id:id"
+likes          -[#595959,plain]-^  users         : "user_id:id"
+posts          -[#595959,plain]-^  blogs         : "blog_id:id"
+posts          -[#595959,plain]-^  posts         : "reply_to_id:id"
+posts          -[#595959,plain]-^  users         : "creator_id:id"
+subscriptions  -[#595959,plain]-^  blogs         : "blog_id:id"
+subscriptions  -[#595959,plain]-^  users         : "user_id:id"
+@enduml
