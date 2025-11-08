@@ -18,6 +18,14 @@ CREATE TABLE IF NOT EXISTS "posts" (
   "reply_to_id" bigint DEFAULT null
 );
 
+CREATE TABLE IF NOT EXISTS "comments" (
+  "id" bigserial PRIMARY KEY,
+  "content" text NOT NULL DEFAULT '',
+  "post_id" bigint NOT NULL,
+  "created_at" timestamp NOT NULL DEFAULT now(),
+  "reply_to_id" bigint DEFAULT null
+);
+
 CREATE TABLE IF NOT EXISTS "likes" (
   "user_id" bigint NOT NULL,
   "post_id" bigint NOT NULL,
@@ -43,6 +51,12 @@ ALTER TABLE "posts" ADD FOREIGN KEY ("creator_id") REFERENCES "users" ("id") ON 
 ALTER TABLE "posts" ADD FOREIGN KEY ("blog_id") REFERENCES "blogs" ("id") ON DELETE CASCADE;
 
 ALTER TABLE "posts" ADD FOREIGN KEY ("reply_to_id") REFERENCES "posts" ("id") ON DELETE CASCADE;
+
+ALTER TABLE "comments" ADD FOREIGN KEY ("post_id") REFERENCES "posts" ("id") ON DELETE CASCADE;
+
+ALTER TABLE "comments" ADD FOREIGN KEY ("reply_to_id") REFERENCES "comments" ("id") ON DELETE CASCADE;
+
+-- ALTER TABLE "likes" ADD CONSTRAINT "test_fk" UNIQUE ("post_id");
 
 ALTER TABLE "likes" ADD FOREIGN KEY ("post_id") REFERENCES "posts" ("id") ON DELETE CASCADE;
 
