@@ -56,8 +56,6 @@ ALTER TABLE "comments" ADD FOREIGN KEY ("post_id") REFERENCES "posts" ("id") ON 
 
 ALTER TABLE "comments" ADD FOREIGN KEY ("reply_to_id") REFERENCES "comments" ("id") ON DELETE CASCADE;
 
--- ALTER TABLE "likes" ADD CONSTRAINT "test_fk" UNIQUE ("post_id");
-
 ALTER TABLE "likes" ADD FOREIGN KEY ("post_id") REFERENCES "posts" ("id") ON DELETE CASCADE;
 
 ALTER TABLE "likes" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id") ON DELETE CASCADE;

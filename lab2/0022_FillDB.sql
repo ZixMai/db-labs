@@ -1,0 +1,153 @@
+-- Очистка всех таблиц и сброс последовательностей
+TRUNCATE TABLE
+  comments,
+  likes,
+  subscriptions,
+  posts,
+  blogs,
+  users
+RESTART IDENTITY CASCADE;
+
+
+-- USERS
+INSERT INTO users (user_name, created_at) VALUES
+('URJylLph', '2025-09-12 07:55:41'),
+('2b2JV57L', '2025-06-22 23:50:06'),
+('fSFgmYRn', '2025-03-08 08:37:19'),
+('AwvHcsOs', '2025-04-02 22:19:09'),
+('SGbr0IES', '2025-04-10 23:20:05'),
+('akxnFLJJ', '2025-01-12 13:58:06'),
+('iEV6kgfE', '2024-11-08 14:46:30'),
+('Dsb32LR1', '2024-12-27 19:04:21'),
+('CVFPCnY3', '2025-01-15 17:26:13'),
+('AkHWrFR3', '2024-12-18 14:34:29');
+
+-- BLOGS
+INSERT INTO blogs (name, description, creator_id, created_at) VALUES
+('Blog_86yZT', 'Description_KOyI9mxdQA', 5, '2025-01-25 01:53:25'),
+('Blog_tDndU', 'Description_j0HgzPvQoS', 8, '2025-02-09 17:26:20'),
+('Blog_u10Pa', 'Description_fsS8BTa1A3', 3, '2025-09-11 06:21:25'),
+('Blog_HUJId', 'Description_VBbS8hFKv1', 5, '2025-04-13 19:31:24'),
+('Blog_M4ORx', 'Description_sqV2lm9AXR', 3, '2025-07-10 06:51:14');
+
+-- POSTS
+INSERT INTO posts (content, blog_id, creator_id, created_at, reply_to_id) VALUES
+('Post content UP1LUUhJY8YsKdG', 4, 3, '2024-12-01 02:35:28', NULL),
+('Post content sEIt5xGDzuo8ZSn', 4, 9, '2025-02-11 09:32:31', NULL),
+('Post content 7ASFuxJkFhGxVhw', 5, 3, '2025-02-01 18:22:47', NULL),
+('Post content UqAkO0Byv9yLKqa', 4, 9, '2025-08-18 02:16:20', 3),
+('Post content 8VgLyE9wym13LbW', 2, 1, '2025-10-25 08:22:11', NULL),
+('Post content J4kdO3Tj22oJzcM', 4, 1, '2025-02-14 16:19:38', NULL),
+('Post content 3s8lQDBuIvxliFV', 4, 1, '2025-02-25 14:51:00', NULL),
+('Post content BoGeeJw8G3YDQb6', 1, 4, '2025-09-21 08:04:26', NULL),
+('Post content f4q8Ro1CLePfL7E', 4, 7, '2024-12-07 23:24:15', 3),
+('Post content sy4wU0MXKhpmkGI', 5, 7, '2025-11-05 01:55:47', 8),
+('Post content JGvBjy7TQFXwllO', 2, 4, '2025-08-18 03:29:41', NULL),
+('Post content t1tjKpyzLsNtWSS', 5, 4, '2025-06-13 10:56:23', NULL),
+('Post content p3rXo54wqpRgLtl', 1, 9, '2025-02-01 20:13:34', 12),
+('Post content i8bT0uqggAbXoEN', 4, 5, '2025-10-15 16:14:47', NULL),
+('Post content dVSSHLcG61lCayz', 1, 6, '2025-01-13 22:34:48', NULL),
+('Post content gkf1I32yXqfcpUz', 4, 8, '2025-02-20 06:25:45', NULL),
+('Post content VsbzrnWtvjcP7wz', 3, 8, '2025-06-24 21:23:23', NULL),
+('Post content UfvNm29ZsUA7zsZ', 5, 1, '2024-11-19 15:37:15', NULL),
+('Post content cCoNTQsVl0eTL0j', 2, 10, '2024-11-27 05:21:05', NULL),
+('Post content aaZbTtTbTkkPh66', 5, 4, '2025-08-05 17:38:59', NULL);
+
+-- COMMENTS
+INSERT INTO comments (content, post_id, created_at, reply_to_id) VALUES
+('Comment 6qX8Ac6hpH', 3, '2025-07-01 19:53:49', NULL),
+('Comment aimpDncVQP', 6, '2025-07-15 14:19:22', NULL),
+('Comment eCPtDCd3rv', 7, '2025-08-22 02:33:41', NULL),
+('Comment ZnliTZ9ct8', 12, '2025-07-24 04:06:28', 1),
+('Comment 3Mld1pYt30', 19, '2025-01-13 03:15:26', 4),
+('Comment crPPI2oWDQ', 13, '2025-03-03 21:26:48', NULL),
+('Comment XA8Nb99D2W', 11, '2025-08-22 02:30:27', NULL),
+('Comment GgUCU7WwMd', 11, '2024-12-17 11:21:05', NULL),
+('Comment BeByCNSBfe', 3, '2025-09-27 21:26:52', NULL),
+('Comment B18T6ADdkt', 20, '2025-09-04 20:41:38', 4),
+('Comment tc3QFv02eO', 5, '2025-08-07 12:18:35', NULL),
+('Comment ivXsxKIwQs', 15, '2025-07-25 22:09:49', NULL),
+('Comment BOxLRmt8PU', 5, '2025-06-16 15:20:27', NULL),
+('Comment bWu42oYzvD', 19, '2025-11-02 10:22:08', 8),
+('Comment PtmS2LwpRp', 15, '2025-03-26 07:25:24', NULL),
+('Comment QcMyUgRWyP', 7, '2025-02-22 11:57:31', NULL),
+('Comment UPRcvCh4lV', 14, '2024-12-08 11:58:01', NULL),
+('Comment JBh3ZpfXur', 10, '2025-03-30 22:13:56', 9),
+('Comment LqdksiuvhV', 12, '2024-11-10 02:47:17', NULL),
+('Comment AkhTIzzK5m', 13, '2025-05-19 01:59:25', NULL),
+('Comment xqk9xdJbAf', 14, '2024-11-21 16:20:07', NULL),
+('Comment JrAjwEpRGq', 15, '2024-12-01 15:02:38', NULL),
+('Comment aAV5IyTcqp', 13, '2025-04-25 20:53:48', NULL),
+('Comment QWLxzuHBMW', 19, '2025-07-17 13:59:55', 3),
+('Comment dXCdgG6Eus', 6, '2025-02-02 18:12:04', NULL),
+('Comment Sfh3YOpLWx', 17, '2025-10-21 16:50:41', NULL),
+('Comment Y7JT8yXIn1', 1, '2025-09-21 07:20:03', NULL),
+('Comment hvR1U1KsSA', 8, '2025-05-10 03:39:16', 12),
+('Comment 6Z8w37y88f', 4, '2025-08-13 20:14:47', NULL),
+('Comment tJazhTZNh9', 10, '2025-09-22 15:43:31', NULL);
+
+-- LIKES
+INSERT INTO likes (user_id, post_id, created_at) VALUES
+(4, 9, '2025-10-28 21:20:40'),
+(5, 1, '2025-03-17 01:24:33'),
+(5, 7, '2025-03-20 19:55:24'),
+(2, 2, '2025-05-19 09:21:37'),
+(1, 3, '2025-08-31 19:18:47'),
+(1, 9, '2025-08-23 01:06:59'),
+(2, 8, '2025-08-03 01:54:06'),
+(2, 14, '2025-06-26 05:55:20'),
+(7, 4, '2025-04-03 06:30:46'),
+(6, 14, '2025-06-07 09:28:54'),
+(7, 19, '2025-09-23 22:28:34'),
+(6, 17, '2025-03-03 19:07:39'),
+(4, 2, '2025-07-30 08:35:25'),
+(5, 6, '2025-04-26 16:12:11'),
+(4, 8, '2025-09-21 03:13:47'),
+(4, 17, '2024-12-18 15:26:19'),
+(5, 12, '2025-07-01 10:25:49'),
+(8, 11, '2024-11-25 07:51:51'),
+(10, 5, '2025-02-07 21:02:58'),
+(10, 11, '2024-12-13 15:06:04'),
+(6, 4, '2025-08-30 09:19:38'),
+(10, 20, '2024-12-06 19:15:32'),
+(6, 13, '2025-06-30 02:26:39'),
+(7, 12, '2025-08-09 10:52:15'),
+(6, 10, '2024-11-29 11:16:25'),
+(3, 11, '2025-10-05 13:47:11'),
+(4, 16, '2025-05-24 16:58:55'),
+(4, 19, '2024-11-22 18:08:45'),
+(9, 9, '2025-05-31 13:47:31'),
+(5, 14, '2025-10-02 19:33:00'),
+(10, 4, '2025-09-13 22:45:56'),
+(1, 1, '2025-05-06 05:29:13'),
+(9, 6, '2025-04-30 20:11:40'),
+(5, 17, '2025-09-30 04:45:01'),
+(7, 11, '2025-01-02 19:18:39'),
+(2, 9, '2025-07-29 18:46:12'),
+(10, 16, '2025-04-28 19:47:41'),
+(1, 13, '2025-09-05 04:01:59'),
+(6, 6, '2025-02-13 02:58:28'),
+(6, 3, '2024-12-26 13:53:03');
+
+-- SUBSCRIPTIONS
+INSERT INTO subscriptions (user_id, blog_id, created_at) VALUES
+(3, 4, '2024-12-08 15:21:19'),
+(4, 3, '2025-07-19 00:24:33'),
+(5, 1, '2025-04-07 00:39:17'),
+(2, 5, '2025-07-28 20:40:34'),
+(7, 1, '2025-04-18 07:13:12'),
+(6, 5, '2025-09-22 17:00:22'),
+(4, 5, '2025-05-21 02:22:12'),
+(3, 3, '2025-09-04 21:03:47'),
+(8, 2, '2025-05-18 10:22:51'),
+(10, 2, '2025-10-21 21:50:04'),
+(9, 4, '2025-03-23 00:59:27'),
+(10, 5, '2024-11-30 20:03:20'),
+(2, 1, '2025-08-28 04:29:12'),
+(1, 5, '2025-06-17 11:31:55'),
+(6, 4, '2024-12-20 09:05:51'),
+(9, 3, '2025-08-13 18:10:29'),
+(1, 1, '2025-05-18 11:56:39'),
+(1, 4, '2024-11-28 17:44:29'),
+(7, 2, '2025-04-22 23:27:21'),
+(6, 3, '2025-06-10 11:14:13');
